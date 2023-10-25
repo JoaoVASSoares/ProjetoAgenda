@@ -1,0 +1,52 @@
+<%- include("includes/head") %> <%- include("includes/nav") %>
+
+<div class="conteiner">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Entrar</h1>
+      <p class="text-center lead">Faça login preenchendo o formulário abaixo</p>
+
+      <%- include('includes/messages') %>
+
+      <div class="col-lg my-5">
+        <h4>Entrar</h4>
+        <p>Se você já tem uma conta, faça login abaixo:</p>
+        <form class="form-login" action="/login/login" method="POST">
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+          <div class="form-group">
+            <label for="exampleInputEmail">Seu e-mail</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail"
+              aria-describedby="emailHelp"
+              placeholder="Digite o e-mail"
+              name="email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >Nunca compartilharemos seu e-mail com mais ninguém.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword">Sua senha</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword"
+              placeholder="Senha"
+              name="password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Entra</button>
+        </form>
+      </div>
+      <a href="../cadastro/index"><h4 class="text-center">Click para se cadastrar</h4></a>
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include("includes/footer") %>

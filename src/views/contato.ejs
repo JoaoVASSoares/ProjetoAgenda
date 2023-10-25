@@ -1,0 +1,73 @@
+<%- include("includes/head") %> <%- include("includes/nav") %>
+<div class="conteiner">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Contato</h1>
+      <p class="text-center lead">Crie ou edite seu contatos abaixo.</p>
+
+      <%- include("includes/messages") %>
+
+      <% if(contato._id) { %>
+      <form action="/contato/edit/<%= contato.id %>" method="POST" class="contato">
+        <% } else { %>
+          <form action="/contato/register" method="POST" class="contato">
+        <% } %>
+        <span class="genErr" hidden></span>
+        <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+        <div class="form-group">
+          <label for="exampleInputName">Nome</label>
+          <input
+            value="<%= contato.nome %>"
+            type="text"
+            class="form-control"
+            id="exampleInputName"
+            placeholder="Digite o nome"
+            name="nome"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputSobrenome">Sobrenome</label>
+          <input
+            value="<%= contato.sobrenome %>"
+            type="text"
+            class="form-control"
+            id="exampleInputSobrenome"
+            placeholder="Digite o sobrenome"
+            name="sobrenome"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail">Email</label>
+          <input
+            value="<%= contato.email %>"
+            type="email"
+            class="form-control"
+            id="exampleInputEmail"
+            placeholder="Digite o email"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputTelefone">Telefone</label>
+          <input
+            value="<%= contato.telefone %>"
+            type="tel"
+            class="form-control"
+            id="exampleInputTelefone"
+            placeholder="Digite o número do telefone"
+            name="telefone"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <% if(contato._id) { %>
+        <a href="/contato/index"><button class="btn btn-primary" type="button">Cadastrar outro contato</button></a>
+        <a href="/"><button class="btn btn-primary" type="button">Vizualizar agenda completa</button></a>
+        <% } %>
+      </form>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+<%- include("includes/footer") %>
